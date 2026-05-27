@@ -1,0 +1,581 @@
+[
+  {
+    "id": 3,
+    "ticketPrice": 5,
+    "players": [
+      {
+        "id": 1,
+        "name": "surya",
+        "group_name": "",
+        "group": "",
+        "tickets": 5
+      },
+      {
+        "id": 2,
+        "name": "trinadh",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 2
+      },
+      {
+        "id": 3,
+        "name": "vignesh",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 3
+      },
+      {
+        "id": 4,
+        "name": "lakshmi",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 1
+      },
+      {
+        "id": 5,
+        "name": "harsha",
+        "group_name": "",
+        "group": "",
+        "tickets": 2
+      },
+      {
+        "id": 6,
+        "name": "vasu",
+        "group_name": "",
+        "group": "",
+        "tickets": 3
+      },
+      {
+        "id": 7,
+        "name": "aditya",
+        "group_name": "",
+        "group": "",
+        "tickets": 2
+      }
+    ],
+    "settlementName": "Organizer",
+    "prizes": {
+      "early5": {
+        "amount": "20",
+        "winners": "surya"
+      },
+      "topLine": {
+        "amount": "10",
+        "winners": "aditya"
+      },
+      "middleLine": {
+        "amount": "10",
+        "winners": "lakshmi"
+      },
+      "bottomLine": {
+        "amount": "10",
+        "winners": "vasu"
+      },
+      "housie": {
+        "amount": "40",
+        "winners": "trinadh"
+      }
+    },
+    "winners": {
+      "early5": "surya",
+      "topLine": "aditya",
+      "middleLine": "lakshmi",
+      "bottomLine": "vasu",
+      "housie": "trinadh"
+    },
+    "result": {
+      "messages": [],
+      "totalAmount": 90,
+      "ticketPrice": 5,
+      "totalTickets": 18,
+      "perTicketAmount": 5,
+      "configuredPrizeTotal": 90,
+      "distributedPrizeTotal": 90,
+      "houseBalance": 0,
+      "settlementName": "Organizer",
+      "scoreboard": [
+        {
+          "name": "surya",
+          "group": "",
+          "settlementParty": "surya",
+          "tickets": 5,
+          "contribution": 25,
+          "winnings": 20,
+          "net": -5
+        },
+        {
+          "name": "trinadh",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 40,
+          "net": 30
+        },
+        {
+          "name": "vignesh",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 3,
+          "contribution": 15,
+          "winnings": 0,
+          "net": -15
+        },
+        {
+          "name": "lakshmi",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 1,
+          "contribution": 5,
+          "winnings": 10,
+          "net": 5
+        },
+        {
+          "name": "harsha",
+          "group": "",
+          "settlementParty": "harsha",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 0,
+          "net": -10
+        },
+        {
+          "name": "vasu",
+          "group": "",
+          "settlementParty": "vasu",
+          "tickets": 3,
+          "contribution": 15,
+          "winnings": 10,
+          "net": -5
+        },
+        {
+          "name": "aditya",
+          "group": "",
+          "settlementParty": "aditya",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 10,
+          "net": 0
+        }
+      ],
+      "transactions": [
+        {
+          "from": "surya",
+          "to": "trinadh group",
+          "amount": 5
+        },
+        {
+          "from": "harsha",
+          "to": "trinadh group",
+          "amount": 10
+        },
+        {
+          "from": "vasu",
+          "to": "trinadh group",
+          "amount": 5
+        }
+      ]
+    },
+    "status": "completed",
+    "createdAt": "2026-03-20T14:22:42.233Z",
+    "updatedAt": "2026-03-20T14:22:46.297Z"
+  },
+  {
+    "id": 4,
+    "ticketPrice": 5,
+    "players": [
+      {
+        "id": 1,
+        "name": "surya",
+        "group_name": "",
+        "group": "",
+        "tickets": 5
+      },
+      {
+        "id": 2,
+        "name": "trinadh",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 2
+      },
+      {
+        "id": 3,
+        "name": "vignesh",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 3
+      },
+      {
+        "id": 4,
+        "name": "lakshmi",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 1
+      },
+      {
+        "id": 5,
+        "name": "harsha",
+        "group_name": "",
+        "group": "",
+        "tickets": 2
+      },
+      {
+        "id": 6,
+        "name": "vasu",
+        "group_name": "",
+        "group": "",
+        "tickets": 3
+      },
+      {
+        "id": 7,
+        "name": "aditya",
+        "group_name": "",
+        "group": "",
+        "tickets": 4
+      }
+    ],
+    "settlementName": "Organizer",
+    "prizes": {
+      "early5": {
+        "amount": "30",
+        "winners": "trinadh, surya"
+      },
+      "topLine": {
+        "amount": "10",
+        "winners": "harsha"
+      },
+      "middleLine": {
+        "amount": "10",
+        "winners": "vasu"
+      },
+      "bottomLine": {
+        "amount": "10",
+        "winners": "aditya"
+      },
+      "housie": {
+        "amount": "40",
+        "winners": "trinadh"
+      }
+    },
+    "winners": {
+      "early5": "trinadh, surya",
+      "topLine": "harsha",
+      "middleLine": "vasu",
+      "bottomLine": "aditya",
+      "housie": "trinadh"
+    },
+    "result": {
+      "messages": [],
+      "totalAmount": 100,
+      "ticketPrice": 5,
+      "totalTickets": 20,
+      "perTicketAmount": 5,
+      "configuredPrizeTotal": 100,
+      "distributedPrizeTotal": 100,
+      "houseBalance": 0,
+      "settlementName": "Organizer",
+      "scoreboard": [
+        {
+          "name": "surya",
+          "group": "",
+          "settlementParty": "surya",
+          "tickets": 5,
+          "contribution": 25,
+          "winnings": 15,
+          "net": -10
+        },
+        {
+          "name": "trinadh",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 55,
+          "net": 45
+        },
+        {
+          "name": "vignesh",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 3,
+          "contribution": 15,
+          "winnings": 0,
+          "net": -15
+        },
+        {
+          "name": "lakshmi",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 1,
+          "contribution": 5,
+          "winnings": 0,
+          "net": -5
+        },
+        {
+          "name": "harsha",
+          "group": "",
+          "settlementParty": "harsha",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 10,
+          "net": 0
+        },
+        {
+          "name": "vasu",
+          "group": "",
+          "settlementParty": "vasu",
+          "tickets": 3,
+          "contribution": 15,
+          "winnings": 10,
+          "net": -5
+        },
+        {
+          "name": "aditya",
+          "group": "",
+          "settlementParty": "aditya",
+          "tickets": 4,
+          "contribution": 20,
+          "winnings": 10,
+          "net": -10
+        }
+      ],
+      "transactions": [
+        {
+          "from": "surya",
+          "to": "trinadh group",
+          "amount": 10
+        },
+        {
+          "from": "vasu",
+          "to": "trinadh group",
+          "amount": 5
+        },
+        {
+          "from": "aditya",
+          "to": "trinadh group",
+          "amount": 10
+        }
+      ]
+    },
+    "status": "completed",
+    "createdAt": "2026-03-20T14:36:57.010Z",
+    "updatedAt": "2026-03-20T14:40:22.698Z"
+  },
+  {
+    "id": 5,
+    "ticketPrice": 5,
+    "players": [
+      {
+        "id": 1,
+        "name": "surya",
+        "group_name": "",
+        "group": "",
+        "tickets": 5
+      },
+      {
+        "id": 2,
+        "name": "trinadh",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 2
+      },
+      {
+        "id": 3,
+        "name": "vignesh",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 3
+      },
+      {
+        "id": 4,
+        "name": "lakshmi",
+        "group_name": "trinadh group",
+        "group": "trinadh group",
+        "tickets": 1
+      },
+      {
+        "id": 5,
+        "name": "harsha",
+        "group_name": "",
+        "group": "",
+        "tickets": 2
+      },
+      {
+        "id": 6,
+        "name": "vasu",
+        "group_name": "",
+        "group": "",
+        "tickets": 3
+      },
+      {
+        "id": 7,
+        "name": "aditya",
+        "group_name": "",
+        "group": "",
+        "tickets": 4
+      }
+    ],
+    "settlementName": "Organizer",
+    "prizes": {
+      "early5": {
+        "amount": "22",
+        "winners": "surya"
+      },
+      "topLine": {
+        "amount": "12",
+        "winners": "trinadh"
+      },
+      "middleLine": {
+        "amount": "12",
+        "winners": "vasu"
+      },
+      "bottomLine": {
+        "amount": "12",
+        "winners": "lakshmi"
+      },
+      "housie": {
+        "amount": "42",
+        "winners": "trinadh"
+      }
+    },
+    "winners": {
+      "early5": "surya",
+      "topLine": "trinadh",
+      "middleLine": "vasu",
+      "bottomLine": "lakshmi",
+      "housie": "trinadh"
+    },
+    "result": {
+      "messages": [],
+      "totalAmount": 100,
+      "ticketPrice": 5,
+      "totalTickets": 20,
+      "perTicketAmount": 5,
+      "configuredPrizeTotal": 100,
+      "distributedPrizeTotal": 100,
+      "houseBalance": 0,
+      "settlementName": "Organizer",
+      "scoreboard": [
+        {
+          "name": "surya",
+          "group": "",
+          "settlementParty": "surya",
+          "tickets": 5,
+          "contribution": 25,
+          "winnings": 22,
+          "prizeBreakdown": [
+            {
+              "label": "Early 5",
+              "amount": 22
+            }
+          ],
+          "net": -3
+        },
+        {
+          "name": "trinadh",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 54,
+          "prizeBreakdown": [
+            {
+              "label": "Top Line",
+              "amount": 12
+            },
+            {
+              "label": "Housie",
+              "amount": 42
+            }
+          ],
+          "net": 44
+        },
+        {
+          "name": "vignesh",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 3,
+          "contribution": 15,
+          "winnings": 0,
+          "prizeBreakdown": [],
+          "net": -15
+        },
+        {
+          "name": "lakshmi",
+          "group": "trinadh group",
+          "settlementParty": "trinadh group",
+          "tickets": 1,
+          "contribution": 5,
+          "winnings": 12,
+          "prizeBreakdown": [
+            {
+              "label": "Bottom Line",
+              "amount": 12
+            }
+          ],
+          "net": 7
+        },
+        {
+          "name": "harsha",
+          "group": "",
+          "settlementParty": "harsha",
+          "tickets": 2,
+          "contribution": 10,
+          "winnings": 0,
+          "prizeBreakdown": [],
+          "net": -10
+        },
+        {
+          "name": "vasu",
+          "group": "",
+          "settlementParty": "vasu",
+          "tickets": 3,
+          "contribution": 15,
+          "winnings": 12,
+          "prizeBreakdown": [
+            {
+              "label": "Middle Line",
+              "amount": 12
+            }
+          ],
+          "net": -3
+        },
+        {
+          "name": "aditya",
+          "group": "",
+          "settlementParty": "aditya",
+          "tickets": 4,
+          "contribution": 20,
+          "winnings": 0,
+          "prizeBreakdown": [],
+          "net": -20
+        }
+      ],
+      "transactions": [
+        {
+          "from": "surya",
+          "to": "trinadh group",
+          "amount": 3
+        },
+        {
+          "from": "harsha",
+          "to": "trinadh group",
+          "amount": 10
+        },
+        {
+          "from": "vasu",
+          "to": "trinadh group",
+          "amount": 3
+        },
+        {
+          "from": "aditya",
+          "to": "trinadh group",
+          "amount": 20
+        }
+      ]
+    },
+    "status": "completed",
+    "createdAt": "2026-03-20T14:55:20.917Z",
+    "updatedAt": "2026-03-20T14:56:08.168Z"
+  }
+]
