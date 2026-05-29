@@ -315,7 +315,7 @@ export default function App() {
     setSettlementName(normalizedGame.settlementName || "Organizer");
     setPrizeAmountsEdited(true);
     setPrizeSetupStatus("Saved prize setup loaded.");
-    setPrizes(normalizePrizeRules(normalizedGame.prizes || initialPrizes));
+    setPrizes(normalizedGame.prizes || initialPrizes);
     await replacePlayers(normalizedGame.players || []);
     await loadPlayers();
     setScreen("builder");
@@ -351,10 +351,9 @@ export default function App() {
   }
 
   async function persistGame(status) {
-    const correctedPrizes = normalizePrizeRules(prizes);
-    const calculation = calculateSettlement(players, ticketPrice, settlementName, correctedPrizes);
+    const calculation = calculateSettlement(players, ticketPrice, settlementName, prizes);
     const winners = Object.fromEntries(
-      Object.entries(correctedPrizes).map(([key, value]) => [key, value.winners])
+      Object.entries(prizes).map(([key, value]) => [key, value.winners])
     );
     const payload = {
       ticketPrice: calculation.ticketPrice,
@@ -576,23 +575,6 @@ export default function App() {
       setPrizeSetupStatus("Prize winners updated. Save when ready.");
     }
 
-    if (field === "amount" && linePrizeKeys.includes(prizeKey)) {
-      const syncedAmount = formatPrizeAmount(toPrizeAmount(value));
-      setPrizes((currentPrizes) => ({
-        ...currentPrizes,
-        ...Object.fromEntries(
-          linePrizeKeys.map((lineKey) => [
-            lineKey,
-            {
-              ...currentPrizes[lineKey],
-              amount: syncedAmount
-            }
-          ])
-        )
-      }));
-      return;
-    }
-
     setPrizes((currentPrizes) => ({
       ...currentPrizes,
       [prizeKey]: {
@@ -603,7 +585,7 @@ export default function App() {
   }
 
   function handlePrizeAmountBlur() {
-    setPrizes((currentPrizes) => normalizePrizeRules(currentPrizes));
+    // Preserve manual prize input and do not auto-correct on blur.
   }
 
   function handleAutoFillPrizes() {
@@ -613,8 +595,7 @@ export default function App() {
   }
 
   async function handleSavePrizeSetup() {
-    const correctedPrizes = normalizePrizeRules(prizes);
-    const validation = validatePrizeSetup(correctedPrizes);
+    const validation = validatePrizeSetup(prizes);
 
     if (!validation.isValid) {
       const messages = [];
@@ -627,12 +608,10 @@ export default function App() {
         messages.push(`Select winners for: ${validation.missingWinners.join(", ")}`);
       }
 
-      setPrizes(correctedPrizes);
       setPrizeSetupStatus(messages.join(". "));
       return;
     }
 
-    setPrizes(correctedPrizes);
     setPrizeAmountsEdited(true);
     setPrizeSetupStatus("Saving prize setup...");
 
@@ -645,7 +624,7 @@ export default function App() {
     }
   }
 
-  const effectivePrizes = normalizePrizeRules(prizes);
+  const effectivePrizes = prizes;
   const liveCalculation = calculateSettlement(players, ticketPrice, settlementName, effectivePrizes);
   const visibleCalculation = savedScorecard || liveCalculation;
   const completedGamesAggregate = buildCompletedGamesAggregate(games);

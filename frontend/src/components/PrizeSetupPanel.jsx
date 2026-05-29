@@ -20,7 +20,7 @@ export default function PrizeSetupPanel({
   return (
     <Panel
       title="Prize Setup"
-      description="Prize amounts are auto-generated from the current total collection. You can edit them any time, and the app will keep all prize amounts as even rupee values, keep Early 5 above every line prize, and keep Housie above all other prizes."
+      description="Prize amounts are auto-generated from the current total collection. You can edit them any time, and manual values are preserved until you recalculate."
     >
       <div className="actions" style={{ marginBottom: 12 }}>
         <span className="pill">
@@ -72,13 +72,13 @@ export default function PrizeSetupPanel({
                   <td>
                     <input
                       className="inline-input"
-                      type="number"
-                      min="0"
-                      step="2"
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       value={prizes[prize.key].amount}
                       placeholder="0"
                       onChange={(event) => onPrizeChange(prize.key, "amount", event.target.value)}
-                      onBlur={() => onPrizeAmountBlur(prize.key)}
+                      onBlur={onPrizeAmountBlur}
                     />
                   </td>
                   <td>
