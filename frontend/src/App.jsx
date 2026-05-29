@@ -319,6 +319,10 @@ export default function App() {
 
   async function handleResumeGame(game) {
     const normalizedGame = normalizeGameRecord(game);
+    if (!normalizedGame.prizes || typeof normalizedGame.prizes !== "object") {
+      setStatusMessage("Error: Saved game has invalid prize data.");
+      return;
+    }
     setCurrentGame(normalizedGame);
     setSavedScorecard(null);
     setTicketPrice(String(normalizedGame.ticketPrice ?? ""));
@@ -386,6 +390,10 @@ export default function App() {
         ? await updateGame(currentGame.id, payload)
         : await createGame(payload);
 
+      if (!response?.game) {
+        throw new Error("Invalid server response: missing game data.");
+      }
+
       setCurrentGame(response.game);
       setStudioStatus(`Game #${response.game.id} ${status === "completed" ? "completed" : "saved as draft"} successfully.`);
       await loadGames();
@@ -401,10 +409,16 @@ export default function App() {
   }
 
   async function handleFinalizeSettlement() {
-    const game = await persistGame("completed");
-    if (game) {
-      setSavedScorecard(game.result || null);
-      setScreen("scorecard");
+    try {
+      const game = await persistGame("completed");
+      if (game) {
+        setSavedScorecard(game.result || null);
+        setScreen("scorecard");
+      } else {
+        setStatusMessage("Failed to finalize settlement. Please try again.");
+      }
+    } catch (error) {
+      setStatusMessage(error.message || "Could not finalize settlement.");
     }
   }
 
@@ -595,7 +609,7 @@ export default function App() {
   }
 
   function handlePrizeAmountBlur() {
-    // Preserve manual prize input and do not auto-correct on blur.
+    // Validation and normalization happen at save time, not on blur.
   }
 
   function handleAutoFillPrizes() {
@@ -622,15 +636,19 @@ export default function App() {
       return;
     }
 
-    setPrizeAmountsEdited(true);
     setPrizeSetupStatus("Saving prize setup...");
 
-    const game = await persistGame("draft");
+    try {
+      const game = await persistGame("draft");
 
-    if (game) {
-      setPrizeSetupStatus(`Prize setup saved to Game #${game.id}.`);
-    } else {
-      setPrizeSetupStatus("Could not save prize setup.");
+      if (game) {
+        setPrizeAmountsEdited(true);
+        setPrizeSetupStatus(`Prize setup saved to Game #${game.id}.`);
+      } else {
+        setPrizeSetupStatus("Could not save prize setup.");
+      }
+    } catch (error) {
+      setPrizeSetupStatus(`Error saving prize setup: ${error.message}`);
     }
   }
 
