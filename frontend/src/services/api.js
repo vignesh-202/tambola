@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.trim() || "";
+
 async function readResponsePayload(response) {
   const contentType = response.headers.get("content-type") || "";
 
@@ -25,8 +27,13 @@ function getApiErrorMessage(response, payload, fallbackMessage) {
   return fallbackMessage;
 }
 
+function resolveApiPath(path) {
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  return baseUrl ? `${baseUrl}${path}` : path;
+}
+
 export async function fetchPlayers() {
-  const response = await fetch("/players");
+  const response = await fetch(resolveApiPath("/players"));
   if (!response.ok) {
     throw new Error("Could not load players from the backend.");
   }
@@ -34,7 +41,7 @@ export async function fetchPlayers() {
 }
 
 export async function createPlayer(payload) {
-  const response = await fetch("/players", {
+  const response = await fetch(resolveApiPath("/players"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -49,7 +56,7 @@ export async function createPlayer(payload) {
 }
 
 export async function deletePlayer(playerId) {
-  const response = await fetch(`/players/${playerId}`, { method: "DELETE" });
+  const response = await fetch(resolveApiPath(`/players/${playerId}`), { method: "DELETE" });
   let data = {};
 
   try {
@@ -66,7 +73,7 @@ export async function deletePlayer(playerId) {
 }
 
 export async function deleteAllPlayers() {
-  const response = await fetch("/players", { method: "DELETE" });
+  const response = await fetch(resolveApiPath("/players"), { method: "DELETE" });
   let data = {};
 
   try {
@@ -83,7 +90,7 @@ export async function deleteAllPlayers() {
 }
 
 export async function fetchGames() {
-  const response = await fetch("/games");
+  const response = await fetch(resolveApiPath("/games"));
   if (!response.ok) {
     throw new Error("Could not load games from the backend.");
   }
@@ -91,7 +98,7 @@ export async function fetchGames() {
 }
 
 export async function createGame(payload) {
-  const response = await fetch("/games", {
+  const response = await fetch(resolveApiPath("/games"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -106,7 +113,7 @@ export async function createGame(payload) {
 }
 
 export async function updateGame(gameId, payload) {
-  const response = await fetch(`/games/${gameId}`, {
+  const response = await fetch(resolveApiPath(`/games/${gameId}`), {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -121,7 +128,7 @@ export async function updateGame(gameId, payload) {
 }
 
 export async function deleteGame(gameId) {
-  const response = await fetch(`/games/${gameId}`, { method: "DELETE" });
+  const response = await fetch(resolveApiPath(`/games/${gameId}`), { method: "DELETE" });
   const data = await readResponsePayload(response);
 
   if (!response.ok) {
@@ -132,7 +139,7 @@ export async function deleteGame(gameId) {
 }
 
 export async function replacePlayers(players) {
-  const response = await fetch("/players", {
+  const response = await fetch(resolveApiPath("/players"), {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ players })
