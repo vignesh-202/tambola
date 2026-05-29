@@ -375,7 +375,7 @@ export default function App() {
         group: player.group || "",
         tickets: player.tickets
       })),
-      prizes: correctedPrizes,
+      prizes,
       winners,
       result: calculation,
       status
