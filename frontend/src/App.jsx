@@ -249,6 +249,8 @@ export default function App() {
     setPrizeSetupStatus("Auto prize setup is ready.");
     setSavedScorecard(null);
     setCurrentGame(null);
+    setPlayers([]);
+    setSelectedPlayerIds([]);
   }
 
   function applyGameTemplate(game) {
@@ -269,30 +271,38 @@ export default function App() {
   }
 
   async function handleAddGameFlow() {
-    let latestGame = games[0];
+    try {
+      let latestGame = games[0];
 
-    if (!latestGame) {
-      try {
+      if (!latestGame) {
         const payload = await fetchGames();
         const normalizedGames = payload.map(normalizeGameRecord);
         setGames(normalizedGames);
         latestGame = normalizedGames[0];
-      } catch (error) {
-        setStudioStatus(error.message);
       }
-    }
 
-    if (latestGame) {
-      const templatePlayers = applyGameTemplate(latestGame);
-      await replacePlayers(templatePlayers);
-      await loadPlayers();
-    } else {
+      if (latestGame) {
+        const templatePlayers = applyGameTemplate(latestGame);
+        try {
+          await replacePlayers(templatePlayers);
+        } catch (error) {
+          setStudioStatus(`Could not load previous players. ${error.message}`);
+        }
+      } else {
+        resetGameBuilder();
+        try {
+          await replacePlayers([]);
+        } catch (error) {
+          setStudioStatus(`Could not clear players for a new game. ${error.message}`);
+        }
+      }
+    } catch (error) {
+      setStudioStatus(error.message);
       resetGameBuilder();
-      await replacePlayers([]);
+    } finally {
       await loadPlayers();
+      setScreen("builder");
     }
-
-    setScreen("builder");
   }
 
   function handleOpenScoreCard() {
